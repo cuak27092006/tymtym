@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Trái tim Lý Tuân</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .heart {
+            width: 120px;
+            height: 120px;
+            background: red;
+            position: relative;
+            transform: rotate(-45deg);
+            box-shadow: 0 0 30px red, 0 0 60px red;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: "";
+            width: 120px;
+            height: 120px;
+            background: red;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .heart::before {
+            top: -60px;
+            left: 0;
+        }
+
+        .heart::after {
+            left: 60px;
+            top: 0;
+        }
+
+        .dap {
+            animation: timdap 1s infinite;
+        }
+
+        @keyframes timdap {
+            0%, 100% {
+                transform: rotate(-45deg) scale(1);
+            }
+
+            50% {
+                transform: rotate(-45deg) scale(1.2);
+            }
+        }
+
+        .text {
+            color: white;
+            margin-top: 80px;
+            font-size: 24px;
+            font-family: Arial;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="heart dap" id="heart"></div>
+
+    <div class="text" id="text">
+         Cua 
+    </div>
+
+    <script>
+        let heart = document.getElementById("heart");
+        let text = document.getElementById("text");
+
+        heart.onclick = function() {
+            heart.classList.remove("dap");
+
+            setTimeout(function() {
+                heart.classList.add("dap");
+            }, 100);
+
+            text.innerHTML = "Cua";
+        };
+    </script>
+
+</body>
+</html>
